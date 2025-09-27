@@ -6,7 +6,9 @@ The menu should have four separate options:
 (Q)uit
 """
 EXCELLENT_THRESHOLD = 90
-PASSED_THRESHOLD = 50
+PASSABLE_THRESHOLD = 50
+LOWEST_SCORE = 0
+HIGHEST_SCORE = 100
 MENU = "(G)et a valid score\n(P)rint result\n(S)how stars\n(Q)uit"
 
 
@@ -32,7 +34,7 @@ def main():
 def get_valid_score():
     """Prompt for a valid score (0–100) and return it."""
     score = int(input("Score: "))
-    while score > 100 or score < 0:
+    while score > HIGHEST_SCORE or score < LOWEST_SCORE:
         print("Invalid score")
         score = int(input("Score: "))
     return score
@@ -47,15 +49,15 @@ def determine_result(score):
     """Determine and return the result of a given score."""
     if score >= EXCELLENT_THRESHOLD:
         return "Excellent"
-    elif score >= PASSED_THRESHOLD:
-        return "Pass"
+    elif score >= PASSABLE_THRESHOLD:
+        return "Passable"
     else:
         return "Bad"
 
 
-def show_stars(score):
+def show_stars(score, symbol = '*'):
     """Display the stars based on the given score."""
-    print("*" * score)
+    print(symbol * score)
 
 
 main()
