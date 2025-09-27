@@ -6,14 +6,14 @@ Broken program to determine score status
 LOWEST_SCORE = 0
 HIGHEST_SCORE = 100
 EXCELLENT_THRESHOLD = 90
-PASSED_THRESHOLD = 50
+PASSABLE_THRESHOLD = 50
 
 score = float(input("Enter score: "))
 if score < LOWEST_SCORE or score > HIGHEST_SCORE:
     message = "Invalid score"
 elif score >= EXCELLENT_THRESHOLD:
     message = "Excellent"
-elif score >= PASSED_THRESHOLD:
+elif score >= PASSABLE_THRESHOLD:
     message = "Passable"
 else:
     message = "Bad"
