@@ -21,4 +21,4 @@ strive to preview those contents for next week on a continuous time
 think more logically and do it more efficiently 
 
 ## What are you doing really well for practicals in this subject?
-do these practicals ahead of due date.
+do these practicals ahead of due date. 
