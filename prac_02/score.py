@@ -11,7 +11,7 @@ PASSABLE_THRESHOLD = 50
 
 
 def main():
-    """Get score, determine status, show status."""
+    """Get score and random score, determine their status, show their status."""
     score = float(input("Enter score: "))
     status = determine_status(score)
     print(status)
