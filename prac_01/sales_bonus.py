@@ -17,4 +17,3 @@ while sales >= 0:
     print(f"Your bonus is ${bonus:.2f}")
     sales = float(input("Enter sales: $"))
 print("Farewell")
-
