@@ -13,7 +13,7 @@ MENU = "(G)et a valid score\n(P)rint result\n(S)how stars\n(Q)uit"
 
 
 def main():
-    """"Display a menu to get score, print result, show stars, or quit."""
+    """Display a menu to get score, print result, show stars, or quit."""
     score = get_valid_score()
     print(MENU)
     choice = input(">>> ").upper()
