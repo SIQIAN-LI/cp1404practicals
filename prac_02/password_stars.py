@@ -1,6 +1,21 @@
-password = input("Enter your password: ")
-while len(password) < 4:
-    print("Your password must be at least 4 characters long")
-    password = input("Enter your password: ")
-print(len(password) * '*')
+MINIMUM_LENGTH = 4
 
+
+def main():
+    password = get_valid_password()
+    print_asterisks(password)
+
+
+def print_asterisks(password):
+    print(len(password) * '*')
+
+
+def get_valid_password():
+    password = input(f"Enter password(at least {MINIMUM_LENGTH} characters): ")
+    while len(password) < MINIMUM_LENGTH:
+        print("Invalid password")
+        password = input(f"Enter password(at least {MINIMUM_LENGTH} characters): ")
+    return password
+
+
+main()
