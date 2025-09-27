@@ -2,8 +2,12 @@
 CP1404/CP5632 - Practical
 Program to determine score status
 """
+import random
+
+LOWEST_SCORE = 0
+HIGHEST_SCORE = 100
 EXCELLENT_THRESHOLD = 90
-PASSED_THRESHOLD = 50
+PASSABLE_THRESHOLD = 50
 
 
 def main():
@@ -11,16 +15,19 @@ def main():
     score = float(input("Enter score: "))
     status = determine_status(score)
     print(status)
+    random_score = random.randint(LOWEST_SCORE, HIGHEST_SCORE)
+    status = determine_status(random_score)
+    print(f"status of random score {random_score} is {status}")
 
 
 def determine_status(score):
     """Determine and return the status of a given score."""
-    if score < 0 or score > 100:
+    if score < LOWEST_SCORE or score > HIGHEST_SCORE:
         return "Invalid score"
     elif score >= EXCELLENT_THRESHOLD:
         return "Excellent"
-    elif score >= PASSED_THRESHOLD:
-        return "Pass"
+    elif score >= PASSABLE_THRESHOLD:
+        return "Passable"
     else:
         return "Bad"
 
