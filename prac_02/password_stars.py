@@ -3,7 +3,6 @@ MINIMUM_LENGTH = 4
 
 def main():
     password = get_valid_password()
-    symbol = input("Enter a symbol(default is *): ")
     print_asterisks(password)
 
 
