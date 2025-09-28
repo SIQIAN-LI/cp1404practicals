@@ -14,12 +14,12 @@ MENU = "(G)et a valid score\n(P)rint result\n(S)how stars\n(Q)uit"
 
 def main():
     """Display a menu to get score, print result, show stars, or quit."""
-    score = get_valid_score(LOWEST_SCORE, HIGHEST_SCORE)
+    score = get_valid_score()
     print(MENU)
     choice = input(">>> ").upper()
     while choice != "Q":
         if choice == "G":
-            score = get_valid_score(LOWEST_SCORE, HIGHEST_SCORE)
+            score = get_valid_score()
         elif choice == "P":
             print_result(score)
         elif choice == "S":
@@ -31,10 +31,10 @@ def main():
     print("Farewell")
 
 
-def get_valid_score(lowest_score, highest_score):
+def get_valid_score():
     """Prompt for a valid score (0–100) and return it."""
     score = int(input("Score: "))
-    while score > highest_score or score < lowest_score:
+    while score > HIGHEST_SCORE or score < LOWEST_SCORE:
         print("Invalid score")
         score = int(input("Score: "))
     return score
