@@ -4,7 +4,7 @@ print(random.randint(5, 20))  # line 1
 print(random.randrange(3, 10, 2))  # line 2
 print(random.uniform(2.5, 5.5))  # line 3
 #Question 1
-# generate a random integer
+# generate a random integer between 5 and 20 (both ends inclusive)
 # the smallest number is 5, the largest number is 20
 
 # Question2
