@@ -20,9 +20,9 @@ with open(NUMBER_FILENAME, "r") as in_file:
 print(line_1 + line_2)
 
 # 4
-total = 0
+total_number = 0
 with open(NUMBER_FILENAME, "r") as in_file:
     for line in in_file:
         number = int(line.strip())
-        total += number
-print(total)
+        total_number += number
+print(total_number)
