@@ -16,7 +16,7 @@ MIN_PRICE = 1
 MAX_PRICE = 100.0
 INITIAL_PRICE = 10.0
 
-out_file = open("price_simulation.txt", "w")
+out_file = open(FILENAME, "w")
 number_of_days = 0
 price = INITIAL_PRICE
 print(f"Starting price: ${price:,.2f}", file=out_file)
