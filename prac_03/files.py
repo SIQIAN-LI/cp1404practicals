@@ -1,14 +1,14 @@
-NAMAE_FILENAME = "name.txt"
+NAME_FILENAME = "name.txt"
 NUMBER_FILENAME = "numbers.txt"
 
 # 1.
-out_file = open(NAMAE_FILENAME, "w")
+out_file = open(NAME_FILENAME, "w")
 name = input("Enter your name: ")
 print(name, file=out_file)
 out_file.close()
 
 # 2.
-in_file = open(NAMAE_FILENAME, "r")
+in_file = open(NAME_FILENAME, "r")
 name = in_file.read().strip()
 print(f"Hi, {name}!")
 in_file.close()
