@@ -13,9 +13,9 @@ def main():
     display_subjects(subject_records)
 
 
-#
+
 def load_data(filename=FILENAME):
-    """Read data from file formatted like: subject,lecturer,number of students."""
+    """Read data from file formatted like: subject,lecturer, number of students."""
     subject_records = []
     input_file = open(filename)
     for line in input_file:
