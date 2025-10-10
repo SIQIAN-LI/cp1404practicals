@@ -12,5 +12,5 @@ for i in range(number_of_picks):
         if number not in numbers:
             numbers.append(number)
     numbers.sort()
-
-    print(numbers)
+    result = ' '.join([f"{number:>2}" for number in numbers])
+    print(result)
