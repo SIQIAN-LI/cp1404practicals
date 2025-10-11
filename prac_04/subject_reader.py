@@ -34,12 +34,12 @@ def load_data(filename=FILENAME):
 
 def display_subjects(subject_records):
     """Print subject information neatly."""
-    max_name_width, max_number_width = determine_alignment(subject_records)
+    max_name_width, max_number_width = get_alignment_width(subject_records)
     for subject in subject_records:
         print(f"{subject[0]} is taught by {subject[1]:<{max_name_width}} and has {subject[2]:>{max_number_width}} students")
 
 
-def determine_alignment(subject_records):
+def get_alignment_width(subject_records):
     """Determine the max width of lecturer name and student numbers."""
     max_name_width = max(len(subject[1]) for subject in subject_records)
     max_number_width = max(len(str(subject[2])) for subject in subject_records)
