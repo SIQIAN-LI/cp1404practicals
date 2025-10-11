@@ -4,14 +4,15 @@ Data file -> lists program
 """
 
 FILENAME = "subject_data.txt"
+SUBJECT_INDEX = 0
+LECTURER_INDEX = 1
+STUDENT_COUNT_INDEX = 2
 
 
 def main():
     """Read subject data and display concisely."""
     subject_records = load_data(FILENAME)
-    print(subject_records)
     display_subjects(subject_records)
-
 
 
 def load_data(filename=FILENAME):
@@ -36,13 +37,14 @@ def display_subjects(subject_records):
     """Print subject information neatly."""
     max_name_width, max_number_width = get_alignment_width(subject_records)
     for subject in subject_records:
-        print(f"{subject[0]} is taught by {subject[1]:<{max_name_width}} and has {subject[2]:>{max_number_width}} students")
+        print(f"{subject[SUBJECT_INDEX]} is taught by {subject[LECTURER_INDEX]:{max_name_width}} "
+              f"and has {subject[STUDENT_COUNT_INDEX]:{max_number_width}} students")
 
 
 def get_alignment_width(subject_records):
     """Determine the max width of lecturer name and student numbers."""
-    max_name_width = max(len(subject[1]) for subject in subject_records)
-    max_number_width = max(len(str(subject[2])) for subject in subject_records)
+    max_name_width = max(len(subject[LECTURER_INDEX]) for subject in subject_records)
+    max_number_width = max(len(str(subject[STUDENT_COUNT_INDEX])) for subject in subject_records)
     return max_name_width, max_number_width
 
 
