@@ -11,11 +11,11 @@ STUDENT_COUNT_INDEX = 2
 
 def main():
     """Read subject data and display concisely."""
-    subject_records = load_data(FILENAME)
+    subject_records = load_subject_records(FILENAME)
     display_subjects(subject_records)
 
 
-def load_data(filename=FILENAME):
+def load_subject_records(filename=FILENAME):
     """Read data from file formatted like: subject,lecturer, number of students."""
     subject_records = []
     input_file = open(filename)
