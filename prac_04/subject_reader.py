@@ -48,4 +48,5 @@ def get_alignment_width(subject_records):
     return max_name_width, max_number_width
 
 
+
 main()
