@@ -21,7 +21,7 @@ number_of_days = 0
 price = INITIAL_PRICE
 print(f"Starting price: ${price:,.2f}", file=out_file)
 
-while MIN_PRICE <= price <= MAX_PRICE:
+while (MIN_PRICE <= price) and (price <= MAX_PRICE):
     price_change = 0
     number_of_days += 1
     # generate a random integer of 1 or 2
