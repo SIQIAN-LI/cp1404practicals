@@ -10,14 +10,18 @@ out_file.close()
 # 2.
 in_file = open(NAME_FILENAME, "r")
 name = in_file.read().strip()
-print(f"Hi, {name}!")
 in_file.close()
+print(f"Hi, {name}!")
 
 # 3.
+total = 0
 with open(NUMBER_FILENAME, "r") as in_file:
-    line_1 = int(in_file.readline())
-    line_2 = int(in_file.readline())
-print(line_1 + line_2)
+    for line in range(0, 2):
+        number = in_file.readline()
+        total += int(number)
+    print(total)
+
+
 
 # 4
 total_number = 0
