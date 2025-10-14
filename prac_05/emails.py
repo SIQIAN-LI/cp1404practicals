@@ -6,19 +6,23 @@ Actual:   20 minutes
 
 
 def main():
-    key_to_values = {}
+    """Get user's email address and name to print."""
+    email_to_name = {}
     email = input("Email: ")
     while email != '':
         name = extract_name_from_email(email)
         confirmation = input(f"Is your name {name}? (Y/n) ").upper()
         if confirmation != 'Y' and confirmation != '':
             name = input("Name: ")
-
-        key_to_values[email] = name
+        email_to_name[email] = name
         email = input("Email: ")
-    print(key_to_values)
+
+    for email, name in email_to_name.items():
+        print(f"{name} ({email})")
+
 
 def extract_name_from_email(email):
+    """Get name from email."""
     username = email.split('@')[0]
     parts = username.split('.')
     name = ' '.join(parts)
