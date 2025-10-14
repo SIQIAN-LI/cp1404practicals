@@ -9,12 +9,14 @@ CHAMPION_INDEX = 2
 
 
 def main():
+    """Get competition records, process records, display statistics."""
     records = load_records(FILENAME)
     champion_to_count, countries = process_records(records)
     display_result(champion_to_count, countries)
 
 
 def display_result(champion_to_count, countries):
+    """Show champions and countries."""
     print("Wimbledon Champions: ")
     for name, count in champion_to_count.items():
         print(f"{name} {count}")
@@ -24,6 +26,7 @@ def display_result(champion_to_count, countries):
 
 
 def load_records(filename):
+    """Extract records from a competition data file into a list"""
     with open(filename, "r", encoding="utf-8-sig") as in_file:
         in_file.readline()
         records = [record.strip().split(',') for record in in_file.readlines()]
@@ -31,6 +34,7 @@ def load_records(filename):
 
 
 def process_records(records):
+    """Get dictionary of champion counts and set of their countries."""
     champion_to_count = {}
     countries = set()
     for record in records:
