@@ -11,8 +11,16 @@ CHAMPION_INDEX = 2
 def main():
     records = load_records(FILENAME)
     champion_to_count, countries = process_records(records)
-    print(champion_to_count)
-    print(countries)
+    display_result(champion_to_count, countries)
+
+
+def display_result(champion_to_count, countries):
+    print("Wimbledon Champions: ")
+    for name, count in champion_to_count.items():
+        print(f"{name} {count}")
+    print()
+    print(f"These {len(countries)} countries have won Wimbledon:")
+    print(', '.join(sorted(countries)))
 
 
 def load_records(filename):
