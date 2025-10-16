@@ -4,7 +4,6 @@ State names in a dictionary
 File needs reformatting
 """
 
-# TODO: Reformat this file so the dictionary code follows PEP 8 convention
 CODE_TO_NAME = {
     "NSW": "New South Wales",
     "QLD": "Queensland",
