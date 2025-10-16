@@ -25,7 +25,7 @@ def extract_name_from_email(email):
     """Get name from email."""
     username = email.split('@')[0]
     parts = username.split('.')
-    name = ' '.join(parts)
+    name = ' '.join(parts).title()
     return name
 
 
