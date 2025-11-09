@@ -24,7 +24,7 @@ def main():
         elif choice == 'A':
             pass
         elif choice == 'U':
-            pass
+            update_project(projects)
         else:
             print("Invalid choice")
         print(MENU)
@@ -67,6 +67,61 @@ def display_projects(projects):
     print("Completed projects:")
     for project in completed_projects:
         print(project)
+
+
+def update_project(projects):
+    """Show indexed list, choose a project, then update percentage and/or priority (blank = keep)."""
+    for i, project in enumerate(projects):
+        print(f"{i} {project}")
+    project_choice = get_valid_project_choice(projects)
+    print(projects[project_choice])
+    update_percentage(projects, project_choice)
+    update_priority(projects, project_choice)
+
+
+def get_valid_project_choice(projects):
+    """Prompt for a valid project index within [0, len(projects)-1]."""
+    maximum_index = len(projects) - 1
+    is_valid_input = False
+    while not is_valid_input:
+        try:
+            project_choice = int(input("Project choice: "))
+            if project_choice < 0 or project_choice > maximum_index:
+                raise ValueError
+            is_valid_input = True
+        except ValueError:
+            print("project choice must between 0 and maximum index")
+    return project_choice
+
+
+def update_percentage(projects, project_choice):
+    """Prompt for a new completion percentage; accept blank to leave unchanged."""
+    is_valid_input = False
+    while not is_valid_input:
+        try:
+            new_percentage = input("New Percentage: ").strip()
+            if new_percentage:
+                if int(new_percentage) < 0 or int(new_percentage) > 100:
+                    raise ValueError
+                projects[project_choice].update_percentage(int(new_percentage))
+            is_valid_input = True
+        except ValueError:
+            print("Percentage must be between 0 and 100 or blank")
+
+
+def update_priority(projects, project_choice):
+    """Prompt for a new priority; accept blank to leave unchanged."""
+    is_valid_input = False
+    while not is_valid_input:
+        try:
+            new_priority = input("New Priority: ").strip()
+            if new_priority:
+                if int(new_priority) <= 0:
+                    raise ValueError
+                projects[project_choice].update_priority(int(new_priority))
+            is_valid_input = True
+        except ValueError:
+            print("Priority must be larger than 0 or blank")
 
 
 main()
