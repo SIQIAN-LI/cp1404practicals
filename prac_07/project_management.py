@@ -1,4 +1,5 @@
 from project import Project
+from operator import attrgetter
 import datetime
 
 MENU = ("- (L)oad projects\n- (S)ave projects\n- (D)isplay projects\n"
@@ -20,9 +21,9 @@ def main():
         elif choice == 'D':
             display_projects(projects)
         elif choice == 'F':
-            pass
+            filter_projects(projects)
         elif choice == 'A':
-            pass
+            add_new_project(projects)
         elif choice == 'U':
             update_project(projects)
         else:
@@ -134,6 +135,14 @@ def add_new_project(projects):
     completion_percentage = get_valid_percentage("Percent complete: ")
     project = Project(name, start_date, priority, cost_estimate, completion_percentage)
     projects.append(project)
+
+
+def filter_projects(projects):
+    """Ask for a threshold date and display projects that start on/after it (sorted by date)."""
+    selected_date = get_valid_date_object("Show projects that start after date (dd/mm/yy): ")
+    selected_projects = [project for project in projects if project.start_date >= selected_date]
+    for project in sorted(selected_projects, key=attrgetter('start_date')):
+        print(project)
 
 
 def get_valid_date_object(prompt):
