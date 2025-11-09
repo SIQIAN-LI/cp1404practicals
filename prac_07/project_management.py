@@ -18,7 +18,7 @@ def main():
         elif choice == 'S':
             pass
         elif choice == 'D':
-            pass
+            display_projects(projects)
         elif choice == 'F':
             pass
         elif choice == 'A':
@@ -55,6 +55,18 @@ def save_projects(filename, projects):
         for project in projects:
             out_file.write(f"{project.name}\t{project.start_date}\t{project.priority}\t"
                            f"{project.cost_estimate}\t{project.completion_percentage}\n")
+
+
+def display_projects(projects):
+    """Display incomplete and completed groups, each group sorted by priority."""
+    completed_projects = sorted(project for project in projects if project.is_completed())
+    incomplete_projects = sorted(project for project in projects if not project.is_completed())
+    print("Incomplete projects:")
+    for project in incomplete_projects:
+        print(project)
+    print("Completed projects:")
+    for project in completed_projects:
+        print(project)
 
 
 main()
