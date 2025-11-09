@@ -124,4 +124,74 @@ def update_priority(projects, project_choice):
             print("Priority must be larger than 0 or blank")
 
 
+def add_new_project(projects):
+    """Create a new Project from validated user inputs and append to the list."""
+    print("Let's add a new project")
+    name = input("Name: ")
+    start_date = get_valid_date_object("Start date (dd/mm/yy): ")
+    priority = get_valid_priority("Priority: ")
+    cost_estimate = get_valid_cost_estimate("Cost estimate: $")
+    completion_percentage = get_valid_percentage("Percent complete: ")
+    project = Project(name, start_date, priority, cost_estimate, completion_percentage)
+    projects.append(project)
+
+
+def get_valid_date_object(prompt):
+    """Prompt until the user enters a valid dd/mm/yyyy (or dd/mm/yy) date; return a date object."""
+    is_valid_input = False
+    while not is_valid_input:
+        try:
+            date = input(prompt)
+            date_object = datetime.datetime.strptime(date, "%d/%m/%Y").date()
+            is_valid_input = True
+        except ValueError:
+            print("Please match the format (%d/%m/%Y)")
+    return date_object
+
+
+def get_valid_priority(prompt):
+    """Prompt until a valid integer priority (> 0) is entered; return the integer."""
+    is_valid_input = False
+    while not is_valid_input:
+        try:
+            priority = int(input(prompt))
+            if priority <= 0:
+                print("Priority must be larger than 0")
+            else:
+                is_valid_input = True
+        except ValueError:
+            print("Please input valid number")
+    return priority
+
+
+def get_valid_cost_estimate(prompt):
+    """Prompt until a valid non-negative float is entered; return the float."""
+    is_valid_input = False
+    while not is_valid_input:
+        try:
+            cost_estimate = float(input(prompt))
+            if cost_estimate < 0:
+                print("Cost estimate must be larger than 0 or equal to 0")
+            else:
+                is_valid_input = True
+        except ValueError:
+            print("Please input a valid number")
+    return cost_estimate
+
+
+def get_valid_percentage(prompt):
+    """Prompt until an integer in [0, 100] is entered; return the integer."""
+    is_valid_input = False
+    while not is_valid_input:
+        try:
+            completion_percentage = int(input(prompt))
+            if completion_percentage < 0 or completion_percentage > 100:
+                print("Completion percentage must be between 0 and 100")
+            else:
+                is_valid_input = True
+        except ValueError:
+            print("Please input a valid percentage")
+    return completion_percentage
+
+
 main()
