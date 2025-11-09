@@ -15,7 +15,7 @@ def main():
     choice = input(">>> ").upper()
     while choice != 'Q':
         if choice == 'L':
-            pass
+            projects = load_new_projects()
         elif choice == 'S':
             pass
         elif choice == 'D':
@@ -143,6 +143,19 @@ def filter_projects(projects):
     selected_projects = [project for project in projects if project.start_date >= selected_date]
     for project in sorted(selected_projects, key=attrgetter('start_date')):
         print(project)
+
+
+def load_new_projects():
+    """Loop until a valid filename is provided; then load and return the projects."""
+    is_valid_input = False
+    while not is_valid_input:
+        try:
+            filename = input("Enter filename to load: ")
+            projects = load_projects(filename)
+            is_valid_input = True
+        except FileNotFoundError:
+            print("Filename is wrong")
+    return projects
 
 
 def get_valid_date_object(prompt):
