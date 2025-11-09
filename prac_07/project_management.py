@@ -8,7 +8,6 @@ DEFAULT_FILENAME = 'projects.txt'
 
 def main():
     projects = load_projects(DEFAULT_FILENAME)
-    print(projects)
     print("Welcome to Pythonic Project Management")
     print(f"Loaded {len(projects)} projects from {DEFAULT_FILENAME}")
     print(MENU)
@@ -30,6 +29,10 @@ def main():
             print("Invalid choice")
         print(MENU)
         choice = input(">>> ").upper()
+    choice = input("Would you like to save to projects.txt? ").upper()
+    if choice == 'Y':
+        save_projects(DEFAULT_FILENAME, projects)
+    print("Thank you for using custom-built project management software.")
 
 
 def load_projects(filename):
@@ -43,6 +46,15 @@ def load_projects(filename):
             project = Project(name, date_object, int(priority), float(cost_estimate), int(percentage))
             projects.append(project)
     return projects
+
+
+def save_projects(filename, projects):
+    """Save the current projects to a tab-delimited file with a header row."""
+    with open(filename, 'w') as out_file:
+        out_file.write("Name\tStart Date\tPriority\tCost Estimate\tCompletion Percentage")
+        for project in projects:
+            out_file.write(f"{project.name}\t{project.start_date}\t{project.priority}\t"
+                           f"{project.cost_estimate}\t{project.completion_percentage}\n")
 
 
 main()
