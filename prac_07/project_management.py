@@ -1,3 +1,7 @@
+"""
+estimate: 3 hours
+actual: 5 hours
+"""
 from project import Project
 from operator import attrgetter
 import datetime
@@ -8,6 +12,7 @@ DEFAULT_FILENAME = 'projects.txt'
 
 
 def main():
+    """Load default file, show menu loop, and optionally save on exit."""
     projects = load_projects(DEFAULT_FILENAME)
     print("Welcome to Pythonic Project Management")
     print(f"Loaded {len(projects)} projects from {DEFAULT_FILENAME}")
