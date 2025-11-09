@@ -17,7 +17,8 @@ def main():
         if choice == 'L':
             projects = load_new_projects()
         elif choice == 'S':
-            pass
+            filename = get_valid_save_filename()
+            save_projects(filename, projects)
         elif choice == 'D':
             display_projects(projects)
         elif choice == 'F':
@@ -156,6 +157,15 @@ def load_new_projects():
         except FileNotFoundError:
             print("Filename is wrong")
     return projects
+
+
+def get_valid_save_filename():
+    """Prompt for a non-empty filename for saving."""
+    filename = input("Enter filename to save； ").strip()
+    while filename == '':
+        print("Filename can not be blank")
+        filename = input("Enter filename to save； ").strip()
+    return filename
 
 
 def get_valid_date_object(prompt):
